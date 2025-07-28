@@ -1,0 +1,34 @@
+┌───────────────────────┐       ┌───────────────────────┐       ┌───────────────────────┐
+│       UTILISATEUR     │       │         ROLE          │       │       DONNÉE         │
+├───────────────────────┤       ├───────────────────────┤       ├───────────────────────┤
+│ PK: user_id           │       │ PK: role_id           │       │ PK: data_id           │
+│    nom                │       │    libellé            │       │    titre              │
+│    email              │       │    permissions        │       │    description        │
+│    mot_de_passe       │       └──────────┬────────────┘       │    date_creation      │
+│    date_inscription   │                  │                    │    date_maj           │
+│    statut_actif       │           ┌──────┴───────┐           │    statut_validation  │
+└──────────┬────────────┘           │              │           │    emplacement_fichier│
+           │                  ┌─────▼────┐   ┌─────▼────┐      │    type_data          │
+           │                  │ USER_ROLE │   │  REVIEW  │      │    metadata           │
+           │                  ├──────────┤   ├──────────┤      └──────────┬────────────┘
+           │                  │PK,FK:    │   │PK:       │                  │
+           └──────────────────┤ user_id  │   │ review_id│                  │
+                              │PK,FK:    │   │FK:       │◄─────────────────┘
+                              │ role_id  │   │ data_id  │          ┌───────┴───────┐
+                              │ date_    │   │FK:       │          │               │
+                              │ attribution │ │ user_id  │    ┌─────▼────┐    ┌─────▼────┐
+                              └──────────┘   │ commentaire│    │ CATÉGORIE │    │  TAG      │
+                                             │ decision    │    ├──────────┤    ├──────────┤
+                                             │ date_review │    │PK:       │    │PK:       │
+                                             └────────────┘    │ cat_id   │    │ tag_id   │
+                                                               │ libellé  │    │ nom      │
+                                                               └──────────┘    └──────────┘
+                                                                     ▲               ▲
+                                                                     │               │
+                                                             ┌───────┴───────┐ ┌─────┴──────┐
+                                                             │ DATA_CATEGORIE│ │ DATA_TAG   │
+                                                             ├───────────────┤ ├────────────┤
+                                                             │PK,FK: data_id │ │PK,FK:      │
+                                                             │PK,FK: cat_id  │ │ data_id    │
+                                                             └───────────────┘ │PK,FK: tag_id│
+                                                                               └────────────┘

@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <base target="_self">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Géoportail Niger - Données géospatiales ouvertes</title>
+    <meta name="description" content="Plateforme d'accès aux données géospatiales et socio-économiques du Niger pour chercheurs, décideurs et citoyens">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- Configuration Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1E3A8A",
+                        secondary: "#1E40AF",
+                        accent: "#3B82F6"
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- CSS personnalisé -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="min-h-screen bg-gray-50">
+    <!-- Header -->
+    <header class="bg-primary text-white shadow-sm">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <img src="https://picsum.photos/50?random=101" alt="Logo Géoportail Niger" class="h-10 w-auto">
+                    <a href="#" class="text-xl font-bold text-white">Géoportail Niger</a>
+                </div>
+                <nav>
+                    <ul class="flex space-x-6">
+                        <li><a href="home.html" class="hover:underline" >Accueil</a></li>
+                        <li><a href="geoportail-demarche.html" class="hover:underline">Notre démarche</a></li>
+                        <li><a href="geoportail-outils.html" class="hover:underline " >Outils et ressources</a></li>
+                        <li><a href="geoportal-catalogue.html" class="hover:underline font-bold" >Catalogue de données</a></li>
+                    </ul>
+                </nav>
+                <div class="flex items-center space-x-4">
+                    <button class="md:hidden text-gray-700">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                    <button class="hidden md:block bg-primary text-white px-4 py-2 rounded-lg hover:bg-secondary">
+                        <i class="fas fa-user mr-2"></i>Connexion
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Page Header -->
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold text-primary mb-2">Catalogue des données ouvertes</h1>
+            <p class="text-gray-600">Explorez et téléchargez les jeux de données géospatiales et socio-économiques du Niger</p>
+        </div>
+
+        <!-- Filters Section -->
+        <div class="bg-white rounded-lg shadow-sm p-6 mb-8">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <!-- Search -->
+                <div class="relative flex-grow max-w-xl">
+                    <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                    <input 
+                        type="text" 
+                        placeholder="Rechercher un dataset..." 
+                        class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"
+                    >
+                </div>
+
+                <!-- Sort -->
+                <div class="flex items-center space-x-2">
+                    <span class="text-gray-600 whitespace-nowrap">Trier par :</span>
+                    <select class="border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-primary">
+                        <option>Pertinence</option>
+                        <option>Date (récentes d'abord)</option>
+                        <option>Date (anciennes d'abord)</option>
+                        <option>Nom (A-Z)</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Filter Chips -->
+            <div class="mt-6 flex flex-wrap gap-2">
+                <div class="relative group">
+                    <button class="flex items-center bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 rounded-full text-sm font-medium transition">
+                        Thème: Santé
+                        <i class="fas fa-times ml-2"></i>
+                    </button>
+                </div>
+                <div class="relative group">
+                    <button class="flex items-center bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 rounded-full text-sm font-medium transition">
+                        Producteur: Ministère de la Santé
+                        <i class="fas fa-times ml-2"></i>
+                    </button>
+                </div>
+                <button class="text-primary hover:text-secondary text-sm font-medium">
+                    <i class="fas fa-times mr-1"></i> Effacer tous les filtres
+                </button>
+            </div>
+        </div>
+
+        <!-- Main Layout -->
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- Sidebar Filters -->
+            <aside class="lg:w-1/4">
+                <div class="bg-white rounded-lg shadow-sm p-6 sticky top-4">
+                    <h2 class="font-bold text-lg mb-4 text-gray-800">Filtrer les résultats</h2>
+                    
+                    <!-- Thèmes -->
+                    <div class="mb-6">
+                        <h3 class="font-medium text-gray-700 mb-3 flex justify-between items-center">
+                            <span>Thèmes</span>
+                            <i class="fas fa-chevron-down text-sm"></i>
+                        </h3>
+                        <div class="space-y-2">
+                            <label class="flex items-center filter-option p-2 rounded-lg cursor-pointer">
+                                <input type="checkbox" class="rounded text-primary mr-3">
+                                <span>Tous les thèmes</span>
+                                <span class="ml-auto text-gray-500 text-sm">128</span>
+                            </label>
+                            <label class="flex items-center filter-option p-2 rounded-lg cursor-pointer">
+                                <input type="checkbox" class="rounded text-primary mr-3">
+                                <span>Agriculture</span>
+                                <span class="ml-auto text-gray-500 text-sm">42</span>
+                            </label>
+                            <label class="flex items-center filter-option p-2 rounded-lg cursor-pointer">
+                                <input type="checkbox" class="rounded text-primary mr-3" checked>
+                                <span>Santé</span>
+                                <span class="ml-auto text-gray-500 text-sm">28</span>
+                            </label>
+                            <label class="flex items-center filter-option p-2 rounded-lg cursor-pointer">
+                                <input type="checkbox" class="rounded text-primary mr-3">
+                                <span>Éducation</span>
+                                <span class="ml-auto text-gray-500 text-sm">19</span>
+                            </label>
+                            <label class="flex items-center filter-option p-2 rounded-lg cursor-pointer">
+                                <input type="checkbox" class="rounded text-primary mr-3">
+                                <span>Environnement</span>
+                                <span class="ml-auto text-gray-500 text-sm">15</span>
+                            </label>
+                            <label class="flex items-center filter-option p-2 rounded-lg cursor-pointer">
+                                <input type="checkbox" class="rounded text-primary mr-3">
+                                <span>Infrastructures</span>
+                                <span class="ml-auto text-gray-500 text-sm">12</span>
+                            </label>
+                            <label class="flex items-center filter-option p-2 rounded-lg cursor-pointer">
+                                <input type="checkbox" class="rounded text-primary mr-3">
+                                <span>Démographie</span>
+                                <span class="ml-auto text-gray-500 text-sm">8</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Producteurs -->
+                    <div class="mb-6">
+                        <h3 class="font-medium text-gray-700 mb-3 flex justify-between items-center">
+                            <span>Producteurs</span>
+                            <i class="fas fa-chevron-down text-sm"></i>
+                        </h3>
+                        <div class="space-y-2">
+                            <label class="flex items-center filter-option p-2 rounded-lg cursor-pointer">
+                                <input type="checkbox" class="rounded text-primary mr-3">
+                                <span>Tous les producteurs</span>
+                                <span class="ml-auto text-gray-500 text-sm">128</span>
+                            </label>
+                            <label class="flex items-center filter-option p-2 rounded-lg cursor-pointer">
+                                <input type="checkbox" class="rounded text-primary mr-3" checked>
+                                <span>Ministère de la Santé</span>
+                                <span class="ml-auto text-gray-500 text-sm">24</span>
+                            </label>
+                            <label class="flex items-center filter-option p-2 rounded-lg cursor-pointer">
+                                <input type="checkbox" class="rounded text-primary mr-3">
+                                <span>Ministère de l'Agriculture</span>
+                                <span class="ml-auto text-gray-500 text-sm">18</span>
+                            </label>
+                            <label class="flex items-center filter-option p-2 rounded-lg cursor-pointer">
+                                <input type="checkbox" class="rounded text-primary mr-3">
+                                <span>INS (Statistiques)</span>
+                                <span class="ml-auto text-gray-500 text-sm">15</span>
+                            </label>
+                            <label class="flex items-center filter-option p-2 rounded-lg cursor-pointer">
+                                <input type="checkbox" class="rounded text-primary mr-3">
+                                <span>ONG Internationales</span>
+                                <span class="ml-auto text-gray-500 text-sm">32</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Dates -->
+                    <div class="mb-6">
+                        <h3 class="font-medium text-gray-700 mb-3">Date de mise à jour</h3>
+                        <div class="space-y-2">
+                            <label class="flex items-center filter-option p-2 rounded-lg cursor-pointer">
+                                <input type="radio" name="date" class="rounded-full text-primary mr-3" checked>
+                                <span>Toutes dates</span>
+                            </label>
+                            <label class="flex items-center filter-option p-2 rounded-lg cursor-pointer">
+                                <input type="radio" name="date" class="rounded-full text-primary mr-3">
+                                <span>Dernières 24h</span>
+                            </label>
+                            <label class="flex items-center filter-option p-2 rounded-lg cursor-pointer">
+                                <input type="radio" name="date" class="rounded-full text-primary mr-3">
+                                <span>7 derniers jours</span>
+                            </label>
+                            <label class="flex items-center filter-option p-2 rounded-lg cursor-pointer">
+                                <input type="radio" name="date" class="rounded-full text-primary mr-3">
+                                <span>30 derniers jours</span>
+                            </label>
+                            <label class="flex items-center filter-option p-2 rounded-lg cursor-pointer">
+                                <input type="radio" name="date" class="rounded-full text-primary mr-3">
+                                <span>Année en cours</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button class="w-full bg-primary text-white py-2 rounded-lg hover:bg-secondary transition">
+                        Appliquer les filtres
+                    </button>
+                </div>
+            </aside>
+
+            <!-- Datasets List -->
+            <div class="lg:w-3/4">
+                <!-- Results Info -->
+                <div class="flex justify-between items-center mb-6">
+                    <p class="text-gray-600">28 résultats trouvés</p>
+                    <div class="flex items-center space-x-2">
+                        <span class="text-gray-600">Vue :</span>
+                        <button class="p-2 text-gray-400 hover:text-primary">
+                            <i class="fas fa-th-large"></i>
+                        </button>
+                        <button class="p-2 text-primary">
+                            <i class="fas fa-list"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Dataset Cards -->
+                <div class="space-y-6">
+                    <!-- Dataset 1 -->
+                    <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition">
+                        <div class="p-6">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h3 class="text-xl font-bold text-gray-800 mb-2">Centres de santé au Niger (2023)</h3>
+                                    <p class="text-gray-600 mb-4">Localisation et caractéristiques des centres de santé publics et privés à travers le Niger avec indicateurs de capacité d'accueil.</p>
+                                </div>
+                                <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Géospatial</span>
+                            </div>
+                            
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="tag bg-green-100 text-green-800 text-xs px-2 py-1 rounded">Santé</span>
+                                <span class="tag bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded">Ministère de la Santé</span>
+                                <span class="tag bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded">Mis à jour: 15/10/2023</span>
+                            </div>
+                            
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center space-x-4 text-sm text-gray-500">
+                                    <span><i class="fas fa-file-csv mr-1"></i> CSV</span>
+                                    <span><i class="fas fa-file-excel mr-1"></i> Excel</span>
+                                    <span><i class="fas fa-map mr-1"></i> GeoJSON</span>
+                                </div>
+                                <button class="text-primary font-medium hover:text-secondary flex items-center">
+                                    Voir plus <i class="fas fa-chevron-right ml-2 text-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dataset 2 -->
+                    <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition">
+                        <div class="p-6">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h3 class="text-xl font-bold text-gray-800 mb-2">Prévalence paludisme par région (2022)</h3>
+                                    <p class="text-gray-600 mb-4">Données annuelles sur les cas de paludisme enregistrés par centre de santé, agrégées au niveau régional.</p>
+                                </div>
+                                <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">Statistique</span>
+                            </div>
+                            
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="tag bg-green-100 text-green-800 text-xs px-2 py-1 rounded">Santé</span>
+                                <span class="tag bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded">Ministère de la Santé</span>
+                                <span class="tag bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded">Mis à jour: 05/09/2023</span>
+                                <span class="tag bg-red-100 text-red-800 text-xs px-2 py-1 rounded">Nouveau</span>
+                            </div>
+                            
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center space-x-4 text-sm text-gray-500">
+                                    <span><i class="fas fa-file-csv mr-1"></i> CSV</span>
+                                    <span><i class="fas fa-file-excel mr-1"></i> Excel</span>
+                                </div>
+                                <button class="text-primary font-medium hover:text-secondary flex items-center">
+                                    Voir plus <i class="fas fa-chevron-right ml-2 text-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dataset 3 -->
+                    <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition">
+                        <div class="p-6">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h3 class="text-xl font-bold text-gray-800 mb-2">Couverture vaccinale par district</h3>
+                                    <p class="text-gray-600 mb-4">Données trimestrielles sur les taux de vaccination (BCG, polio, rougeole) pour les enfants de 0 à 5 ans.</p>
+                                </div>
+                                <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Géospatial</span>
+                            </div>
+                            
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="tag bg-green-100 text-green-800 text-xs px-2 py-1 rounded">Santé</span>
+                                <span class="tag bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded">Ministère de la Santé</span>
+                                <span class="tag bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded">Mis à jour: 22/08/2023</span>
+                            </div>
+                            
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center space-x-4 text-sm text-gray-500">
+                                    <span><i class="fas fa-file-csv mr-1"></i> CSV</span>
+                                    <span><i class="fas fa-file-excel mr-1"></i> Excel</span>
+                                    <span><i class="fas fa-map mr-1"></i> Shapefile</span>
+                                </div>
+                                <button class="text-primary font-medium hover:text-secondary flex items-center">
+                                    Voir plus <i class="fas fa-chevron-right ml-2 text-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dataset 4 -->
+                    <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition">
+                        <div class="p-6">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h3 class="text-xl font-bold text-gray-800 mb-2">Infrastructures sanitaires - Capacités lits</h3>
+                                    <p class="text-gray-600 mb-4">Inventaire national des lits d'hôpitaux par établissement avec spécialités médicales disponibles.</p>
+                                </div>
+                                <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">Statistique</span>
+                            </div>
+                            
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="tag bg-green-100 text-green-800 text-xs px-2 py-1 rounded">Santé</span>
+                                <span class="tag bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded">Ministère de la Santé</span>
+                                <span class="tag bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded">Mis à jour: 10/07/2023</span>
+                            </div>
+                            
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center space-x-4 text-sm text-gray-500">
+                                    <span><i class="fas fa-file-csv mr-1"></i> CSV</span>
+                                    <span><i class="fas fa-file-excel mr-1"></i> Excel</span>
+                                    <span><i class="fas fa-database mr-1"></i> API</span>
+                                </div>
+                                <button class="text-primary font-medium hover:text-secondary flex items-center">
+                                    Voir plus <i class="fas fa-chevron-right ml-2 text-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="flex justify-center mt-8">
+                        <nav class="flex items-center space-x-2">
+                            <button class="px-3 py-1 rounded-lg border border-gray-300 text-gray-500 hover:bg-gray-100">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="px-3 py-1 rounded-lg bg-primary text-white">1</button>
+                            <button class="px-3 py-1 rounded-lg border border-gray-300 hover:bg-gray-100">2</button>
+                            <button class="px-3 py-1 rounded-lg border border-gray-300 hover:bg-gray-100">3</button>
+                            <span class="px-2 text-gray-500">...</span>
+                            <button class="px-3 py-1 rounded-lg border border-gray-300 hover:bg-gray-100">8</button>
+                            <button class="px-3 py-1 rounded-lg border border-gray-300 text-gray-500 hover:bg-gray-100">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Géoportail Niger</h3>
+                    <p class="text-gray-300">Plateforme d'accès aux données géospatiales et socio-économiques du Niger pour une prise de décision éclairée.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Liens utiles</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-white">Documentation</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Conditions d'utilisation</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Politique de confidentialité</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2 text-gray-300"></i>
+                            <span class="text-gray-300">contact@geoportail-niger.ne</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-2 text-gray-300"></i>
+                            <span class="text-gray-300">+227 XX XX XX XX</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
+                <p>© 2023 Géoportail Niger. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Sample dataset data
+        const datasets = [
+            {
+                id: 1,
+                title: "Centres de santé au Niger (2023)",
+                description: "Localisation et caractéristiques des centres de santé publics et privés à travers le Niger avec indicateurs de capacité d'accueil.",
+                type: "Géospatial",
+                theme: "Santé",
+                producer: "Ministère de la Santé",
+                updated: "15/10/2023",
+                formats: ["CSV", "Excel", "GeoJSON"],
+                isNew: false
+            },
+            {
+                id: 2,
+                title: "Prévalence paludisme par région (2022)",
+                description: "Données annuelles sur les cas de paludisme enregistrés par centre de santé, agrégées au niveau régional.",
+                type: "Statistique",
+                theme: "Santé",
+                producer: "Ministère de la Santé",
+                updated: "05/09/2023",
+                formats: ["CSV", "Excel"],
+                isNew: true
+            },
+            // More datasets would be added here in a real implementation
+        ];
+
+        // Navigation handling
+      document.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            if (href && href.startsWith('#')) {
+                e.preventDefault(); // Empêche les ancres
+            }
+            console.log(`Clique sur : ${href}`);
+            });
+        });
+
+        // Filter toggles
+        document.querySelectorAll('.filter-option').forEach(option => {
+            option.addEventListener('click', (e) => {
+                const input = option.querySelector('input');
+                input.checked = !input.checked;
+            });
+        });
+    </script>
+</body>
+</html>

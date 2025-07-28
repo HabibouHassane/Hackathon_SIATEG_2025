@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <base target="_self">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Géoportail Niger - Données géospatiales ouvertes</title>
+    <meta name="description" content="Plateforme d'accès aux données géospatiales et socio-économiques du Niger pour chercheurs, décideurs et citoyens">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- Configuration Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1E3A8A",
+                        secondary: "#1E40AF",
+                        accent: "#3B82F6"
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- CSS personnalisé -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="min-h-screen flex flex-col bg-gray-50">
+    <!-- Header -->
+    <header class="bg-primary text-white shadow-md">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <img src="https://picsum.photos/50?random=1" alt="Logo Géoportail Niger" class="h-10 w-auto">
+                    <h1 class="text-xl font-bold text-white">Géoportail Niger</h1>
+                </div>
+                <nav>
+                    <ul class="flex space-x-6">
+                        <li><a href="home.html" class="hover:underline font-bold">Accueil</a></li>
+                        <li><a href="geoportail-demarche.html" class="hover:underline">Notre démarche</a></li>
+                        <li><a href="geoportail-outils.html" class="hover:underline">Outils et ressources</a></li>
+                        <li><a href="geoportal-catalogue.html" class="hover:underline">Catalogue de données</a></li>
+                    </ul>
+                </nav>
+                <div class="flex items-center space-x-4">
+                    <button class="md:hidden text-gray-700">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                    <button class="hidden md:block bg-primary text-white px-4 py-2 rounded-lg hover:bg-secondary">
+                        <i class="fas fa-user mr-2"></i>Connexion
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-3xl md:text-4xl text-primary font-bold mb-4">Géoportail Web Intelligent du Niger</h2>
+                <p class="text-xl mb-8">Accès libre et interactif aux données géospatiales et socio-économiques pour une prise de décision éclairée</p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <button class="bg-primary text-white font-semibold px-6 py-3 rounded-lg hover:bg-gray-100 hover:text-primary transition">Explorer les données</button>
+                    <button class="border-2 border-primary text-primary font-semibold px-6 py-3 rounded-lg hover:bg-primay hover:text-primary transition">Découvrir les outils</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl font-bold text-center mb-12 text-gray-800">Accédez aux données qui vous intéressent</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-md transition">
+                    <div class="text-primary mb-4">
+                        <i class="fas fa-database text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Catalogue des données</h3>
+                    <p class="text-gray-600">Explorez les jeux de données par thème, producteur ou date de mise à jour. Agriculture, santé, éducation, environnement et plus.</p>
+                    <a href="#" class="inline-block mt-4 text-primary font-medium hover:underline">Accéder au catalogue →</a>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-md transition">
+                    <div class="text-primary mb-4">
+                        <i class="fas fa-tools text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Outils interactifs</h3>
+                    <p class="text-gray-600">Cartes interactives, tableaux de bord, API et options d'export pour analyser des tendances et visualiser des indicateurs.</p>
+                    <a href="#" class="inline-block mt-4 text-primary font-medium hover:underline">Découvrir les outils →</a>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-md transition">
+                    <div class="text-primary mb-4">
+                        <i class="fas fa-lightbulb text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Notre démarche</h3>
+                    <p class="text-gray-600">Encourageons la gouvernance ouverte et l'inclusion citoyenne pour un Niger plus informé, transparent et résilient.</p>
+                    <a href="#" class="inline-block mt-4 text-primary font-medium hover:underline">En savoir plus →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Data Visualization Preview -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl font-bold text-center mb-12 text-gray-800">Visualisation des données</h2>
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Cartographie interactive</h3>
+                    <p class="text-gray-600 mb-6">Explorez les données géospatiales du Niger à travers nos cartes interactives. Filtrez par couches thématiques, effectuez des analyses spatiales et exportez les résultats.</p>
+                    <button class="bg-primary text-white font-semibold px-6 py-3 rounded-lg hover:bg-secondary transition">Essayer la carte</button>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-md">
+                    <img src="https://picsum.photos/600/400?random=2" alt="Prévisualisation de la carte interactive" class="w-full rounded" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-16 bg-primary text-white">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <div class="text-center mb-8">
+                <h2 class="text-2xl font-bold mb-2">Restez informé</h2>
+                <p class="opacity-90">Abonnez-vous à notre newsletter pour recevoir les dernières mises à jour de données et nouvelles fonctionnalités.</p>
+            </div>
+            <form class="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto">
+                <input type="email" placeholder="Votre adresse email" class="flex-grow px-4 py-3 rounded-lg text-gray-800">
+                <button type="submit" class="bg-white text-primary font-semibold px-6 py-3 rounded-lg hover:bg-gray-100 transition">S'abonner</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Géoportail Niger</h3>
+                    <p class="text-gray-300">Plateforme d'accès aux données géospatiales et socio-économiques du Niger.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Navigation</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-white">Accueil</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Catalogue des données</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Outils</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Notre démarche</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Ressources</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-white">Documentation</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">API</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">FAQ</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center space-x-2">
+                            <i class="fas fa-envelope"></i>
+                            <span class="text-gray-300">contact@geoportail-niger.ne</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i class="fas fa-phone"></i>
+                            <span class="text-gray-300">+227 XX XX XX XX</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span class="text-gray-300">Niamey, Niger</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>© 2023 Géoportail Niger. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation handling
+        document.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                const href = link.getAttribute('href');
+                if (href && href.startsWith('#')) {
+                    e.preventDefault();
+                }
+                console.log(`Clique sur : ${href}`);
+            });
+        });
+
+        // Form handling
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert("Merci pour votre abonnement !");
+        });
+    </script>
+</body>
+</html>

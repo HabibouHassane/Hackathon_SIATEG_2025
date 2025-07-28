@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <base target="_self">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Géoportail Niger - Données géospatiales ouvertes</title>
+    <meta name="description" content="Plateforme d'accès aux données géospatiales et socio-économiques du Niger pour chercheurs, décideurs et citoyens">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- Configuration Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1E3A8A",
+                        secondary: "#1E40AF",
+                        accent: "#3B82F6"
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- CSS personnalisé -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="min-h-screen bg-gray-50">
+    <header class="bg-primary text-white shadow-md">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-map-marked-alt text-3xl"></i>
+                    <h1 class="text-2xl font-bold">Géoportail Intelligent du Niger</h1>
+                </div>
+                <nav>
+                    <ul class="flex space-x-6">
+                        <li><a href="home.html" class="hover:underline" >Accueil</a></li>
+                        <li><a href="geoportail-demarche.html" class="hover:underline font-bold ">Notre démarche</a></li>
+                        <li><a href="geoportail-outils.html" class="hover:underline " >Outils et ressources</a></li>
+                        <li><a href="geoportal-catalogue.html" class="hover:underline" >Catalogue de données</a></li>
+                    </ul>
+                </nav>
+                <div class="flex items-center space-x-4">
+                    <button class="md:hidden text-gray-700">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                    <button class="hidden md:block bg-primary text-white px-4 py-2 rounded-lg hover:bg-secondary">
+                        <i class="fas fa-user mr-2"></i>Connexion
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-12">
+        <section class="mb-16 text-center">
+            <h2 class="text-4xl font-bold text-primary mb-6">Notre Démarche</h2>
+            <p class="text-xl text-gray-700 max-w-3xl mx-auto">
+                Une plateforme ouverte et collaborative pour le développement durable du Niger grâce aux données géospatiales et à l'intelligence artificielle.
+            </p>
+        </section>
+
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
+            <div class="bg-white p-8 rounded-lg shadow-md">
+                <div class="flex items-center mb-4">
+                    <i class="fas fa-lock-open text-3xl text-secondary mr-4"></i>
+                    <h3 class="text-2xl font-semibold text-primary">Accès libre aux données ouvertes</h3>
+                </div>
+                <p class="text-gray-700 mb-4">
+                    Nous croyons en la puissance des données ouvertes pour transformer la société. Toutes les données géospatiales et socio-économiques sont disponibles gratuitement sous licence libre, favorisant leur réutilisation par tous.
+                </p>
+                <img src="https://picsum.photos/600/300?random=1" alt="Visualisation de données ouvertes" class="w-full rounded-lg" loading="lazy">
+            </div>
+
+            <div class="bg-white p-8 rounded-lg shadow-md">
+                <div class="flex items-center mb-4">
+                    <i class="fas fa-eye text-3xl text-secondary mr-4"></i>
+                    <h3 class="text-2xl font-semibold text-primary">Transparence et gouvernance</h3>
+                </div>
+                <p class="text-gray-700 mb-4">
+                    Notre plateforme promeut la transparence dans la gestion des territoires et des ressources. Les outils de visualisation et d'analyse aident à une prise de décision éclairée basée sur des données fiables et actualisées.
+                </p>
+                <img src="https://picsum.photos/600/300?random=2" alt="Carte interactive de transparence" class="w-full rounded-lg" loading="lazy">
+            </div>
+        </section>
+
+        <section class="mb-16">
+            <div class="bg-white p-8 rounded-lg shadow-md">
+                <div class="flex items-center mb-6">
+                    <i class="fas fa-users text-3xl text-secondary mr-4"></i>
+                    <h3 class="text-2xl font-semibold text-primary">Inclusion citoyenne</h3>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <p class="text-gray-700 mb-4">
+                            Le géoportail met à disposition des outils simples pour permettre à chaque citoyen de comprendre les enjeux territoriaux, de participer à l'amélioration des données et de s'impliquer dans les processus décisionnels.
+                        </p>
+                        <ul class="space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-secondary mt-1 mr-2"></i>
+                                <span>Formations aux outils géomatiques</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-secondary mt-1 mr-2"></i>
+                                <span>Plateforme de signalement citoyen</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-secondary mt-1 mr-2"></i>
+                                <span>Consultations publiques en ligne</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <img src="https://picsum.photos/500/300?random=3" alt="Citoyens utilisant la plateforme" class="w-full rounded-lg" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16">
+            <div class="bg-gradient-to-r from-primary to-secondary text-white p-8 rounded-lg shadow-lg">
+                <div class="flex items-center mb-6">
+                    <i class="fas fa-brain text-3xl text-white mr-4"></i>
+                    <h3 class="text-2xl font-semibold">Technologies innovantes</h3>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white bg-opacity-20 p-4 rounded-lg">
+                        <h4 class="text-xl font-semibold mb-2">Intelligence Artificielle</h4>
+                        <p>Algorithmes prédictifs pour l'analyse territoriale et la prospective socio-économique.</p>
+                    </div>
+                    <div class="bg-white bg-opacity-20 p-4 rounded-lg">
+                        <h4 class="text-xl font-semibold mb-2">SIG Open Source</h4>
+                        <p>Solutions cartographiques performantes basées sur QGIS, PostGIS et Leaflet.</p>
+                    </div>
+                    <div class="bg-white bg-opacity-20 p-4 rounded-lg">
+                        <h4 class="text-xl font-semibold mb-2">Cloud Computing</h4>
+                        <p>Infrastructure scalable pour le traitement des big data géospatiales.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-white p-8 rounded-lg shadow-md mb-16">
+            <h3 class="text-2xl font-semibold text-primary mb-6 text-center">Rejoignez notre écosystème</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center p-4 border border-gray-200 rounded-lg hover:shadow-md transition">
+                    <i class="fas fa-code text-4xl text-accent mb-4"></i>
+                    <h4 class="text-xl font-semibold mb-2">Développeurs</h4>
+                    <p class="text-gray-700 mb-4">Contribuez à l'amélioration de la plateforme via notre API et nos dépôts GitHub.</p>
+                    <button class="bg-accent text-white px-4 py-2 rounded hover:bg-opacity-90 transition">Voir la documentation</button>
+                </div>
+                <div class="text-center p-4 border border-gray-200 rounded-lg hover:shadow-md transition">
+                    <i class="fas fa-database text-4xl text-accent mb-4"></i>
+                    <h4 class="text-xl font-semibold mb-2">Producteurs de données</h4>
+                    <p class="text-gray-700 mb-4">Partagez vos jeux de données pour enrichir la connaissance territoriale.</p>
+                    <button class="bg-accent text-white px-4 py-2 rounded hover:bg-opacity-90 transition">Soumettre des données</button>
+                </div>
+                <div class="text-center p-4 border border-gray-200 rounded-lg hover:shadow-md transition">
+                    <i class="fas fa-lightbulb text-4xl text-accent mb-4"></i>
+                    <h4 class="text-xl font-semibold mb-2">Innovateurs</h4>
+                    <p class="text-gray-700 mb-4">Utilisez nos données pour créer des solutions locales aux défis du Niger.</p>
+                    <button class="bg-accent text-white px-4 py-2 rounded hover:bg-opacity-90 transition">Découvrir les opportunités</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h4 class="text-xl font-semibold mb-4">Géoportail Niger</h4>
+                    <p>Plateforme nationale de données géospatiales ouvertes pour le développement durable.</p>
+                </div>
+                <div>
+                    <h4 class="text-xl font-semibold mb-4">Liens utiles</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:underline" onclick="event.preventDefault()">Portail Open Data Niger</a></li>
+                        <li><a href="#" class="hover:underline" onclick="event.preventDefault()">Documentation technique</a></li>
+                        <li><a href="#" class="hover:underline" onclick="event.preventDefault()">Formations</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-semibold mb-4">Contact</h4>
+                    <address class="not-italic">
+                        <p>Ministère de l'Aménagement du Territoire</p>
+                        <p>Niamey, Niger</p>
+                        <p>contact@geoportail-niger.ne</p>
+                    </address>
+                </div>
+                <div>
+                    <h4 class="text-xl font-semibold mb-4">Suivez-nous</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" onclick="event.preventDefault()"><i class="fab fa-twitter text-2xl hover:text-primary transition"></i></a>
+                        <a href="#" onclick="event.preventDefault()"><i class="fab fa-linkedin text-2xl hover:text-primary transition"></i></a>
+                        <a href="#" onclick="event.preventDefault()"><i class="fab fa-github text-2xl hover:text-primary transition"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p>© 2023 Géoportail Intelligent du Niger - Tous droits réservés</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Données pour les sections dynamiques
+        const valeursProjet = [
+            { 
+                "titre": "Innovation locale", 
+                "description": "Nous soutenons les startups et projets utilisant nos données pour résoudre des problèmes locaux."
+            },
+            { 
+                "titre": "Durabilité", 
+                "description": "Nos solutions technologiques sont conçues pour être maintenables à long terme avec des ressources locales."
+            },
+            { 
+                "titre": "Collaboration", 
+                "description": "Nous travaillons avec les universités, le secteur privé et la société civile pour une approche inclusive."
+            }
+        ];
+
+        // Gestion des événements pour les boutons
+                document.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                const href = link.getAttribute('href');
+                if (href && href.startsWith('#')) {
+                    e.preventDefault(); // Empêche les ancres
+                }
+                console.log(`Clique sur : ${href}`);
+            });
+        });
+    </script>
+</body>
+</html>
